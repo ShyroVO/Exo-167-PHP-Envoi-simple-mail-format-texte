@@ -6,11 +6,18 @@
  * 3. Déployez sur votre serveur et testez !
  */
 
-$from = '';
-$to = '';
+$from = 'personne@example.com';
+$to = 'rarovar914@200cai.com';
+/*
+$subject = 'Sujet';
+$header = 'From: webmaster@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 $message = 'Hello World, sending a simple mail !';
 // TODO Votre code ici.
 
+mail($to, $subject, $message, $header);
+*/
 
 /**
  * 4. Commentez le code précédent, mais gardez les variables $from et $to
@@ -24,3 +31,21 @@ $message = 'Hello World, sending a simple mail !';
  *     N'écrasez pas les valeurs déjà existantes ( s'il y en a ).
  */
 // TODO Votre code ici.
+$message = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+$subject = "Sujet";
+$header = 'From: webmaster@example.com' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+$message = wordwrap($message, 70, "\r\n");
+
+$sucess = mail($to, $subject, $message, $header);
+
+if ($sucess){
+    echo "Envois reussis";
+    $errorMessage = error_get_last()['message'];
+    fopen('mails.txt', 'w', '\n');
+    file_put_contents('mails.txt', $message);
+}
+else{
+    echo "Erreur dans l'envois";
+}
